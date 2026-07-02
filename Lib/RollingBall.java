@@ -16,7 +16,6 @@ public class RollingBall extends JFrame {
     }
 }
 class Draw extends JPanel implements ActionListener{
-    int xy = 5;
     int size = 100;
     int n=0;
     public Draw(){
@@ -29,18 +28,20 @@ class Draw extends JPanel implements ActionListener{
         int x = (getWidth() - size) / 2;
         int y = (getHeight() - size) / 2;
 
-        int cx = x + size / 2;
-        int cy = y + size / 2;
-
 
         g.setColor(Color.BLACK);
-        g.drawOval(x, y, size, size);
-        g.fillArc(x, y, size, size, 0, 180);
+        g.drawOval(x-n, y, size, size);
+        g.fillArc(x-n, y, size, size, 0+n, 180);
 
        
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (n<150) {
+            n+=5;
+        }
+        else
+            n=-150;
         repaint();
     }
 
